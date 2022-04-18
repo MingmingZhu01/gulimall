@@ -30,6 +30,10 @@ public class SpuBoundsController {
     @Autowired
     private SpuBoundsService spuBoundsService;
 
+    @RequestMapping("/member/list")
+    public R memberSpu() {
+        return R.ok().put("test", Arrays.asList("test1"));
+    }
     /**
      * 列表
      */

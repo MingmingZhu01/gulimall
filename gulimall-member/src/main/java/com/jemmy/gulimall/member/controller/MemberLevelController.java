@@ -3,6 +3,7 @@ package com.jemmy.gulimall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.jemmy.gulimall.member.feign.TestFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,15 @@ import com.jemmy.common.utils.R;
 public class MemberLevelController {
     @Autowired
     private MemberLevelService memberLevelService;
+
+    @Autowired
+    private TestFeignService testFeignService;
+
+    @RequestMapping("/coupons/test")
+    public R test() {
+        R test = testFeignService.testMemberCoupon();
+        return R.ok().put("abc", "ccc").put("result", test.get("test"));
+    }
 
     /**
      * 列表
